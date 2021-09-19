@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cmath>
+
+char OriginalMaze[15][15]=
+{
+'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#',
+'#','e',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',
+'#','#','#',' ','#',' ','#','#','#','#','#','#','#',' ','#',
+'#',' ','#',' ','#',' ','#','#','#','#','#','#','#',' ','#',
+'#',' ','#',' ','#',' ','#','#',' ',' ',' ',' ',' ',' ','#',
+'#',' ','#',' ','#',' ','#','#',' ','#',' ','#','#',' ','#',
+'#',' ','#',' ','#',' ','#','#',' ','#',' ','#','#',' ','#',
+'#',' ','#',' ','#',' ',' ',' ',' ','#',' ','#','#',' ','#',
+'#',' ','#',' ','#','#','#',' ','#','#',' ','#','#',' ','#',
+'#',' ','#',' ','#','#','#',' ','#','#',' ','#','#',' ','#',
+'#',' ','#',' ','#','#','#',' ','#','#',' ',' ','#',' ','#',
+'#',' ','#',' ',' ','#','#','#','#','#','#',' ','#',' ','#',
+'#',' ','#','#',' ','#','#','#','#','#','#',' ','#',' ','#',
+'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','s','#',
+'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#',
+};
+char VisionMaze[15][15];
+int SizeofMaze=15;
+struct xy {int x; int y;};
+xy player, startpoint, endpoint;
+int VisionDistance = 5;
+bool flag=false;
+////////////////////////////////////////////////////////////////////////
+void showVM()
+{
+    for(int i=0;i<SizeofMaze;i++)
+    {
+        for(int j=0;j<SizeofMaze;j++) std::cout<<VisionMaze[i][j];
+        std::cout<<" "<<std::endl;
+    }
+}
+void preTEST()
+{
+    for(int i=0;i<SizeofMaze;i++)
+    {
+        for(int j=0;j<SizeofMaze;j++) 
+        {
+            if(OriginalMaze[i][j]=='s') {startpoint.x=j; startpoint.y=i;} 
+            if(OriginalMaze[i][j]=='e') {endpoint.x=j; endpoint.y=i;} 
+        }
+    }
+    player.x=startpoint.x; player.y=startpoint.y;
+}
+void synchro()
+{
+    for(int i=0;i<SizeofMaze;i++)
+    {
+        for(int j=0;j<SizeofMaze;j++) VisionMaze[i][j]='@';
+    }
+    for(int i=0;i<SizeofMaze;i++)
+    {
+        for(int j=0;j<SizeofMaze;j++) if(sqrt((pow(player.x-j,2))+(pow(player.y-i,2))) <= VisionDistance) VisionMaze[i][j]=OriginalMaze[i][j];
+    }
+    VisionMaze[player.y][player.x]='p';
+}
+void Go(char a)
+{
+    if(a=='w')
+    {
+        if(OriginalMaze[player.y-1][player.x]=='#') std::cout<<"NO"<<std::endl;
+        else player.y-=1;
+    }
+    else if(a=='a')
+    {
+        if(OriginalMaze[player.y][player.x-1]=='#') std::cout<<"NO"<<std::endl;
+        else player.x-=1;
+    }
+    else if(a=='s')
+    {
+        if(OriginalMaze[player.y+1][player.x]=='#') std::cout<<"NO"<<std::endl;
+        else player.y+=1;
+    }
+    else if(a=='d')
+    {
+        if(OriginalMaze[player.y][player.x+1]=='#') std::cout<<"NO"<<std::endl;
+        else player.x+=1;
+    }
+}
+void check()
+{
+    if(player.x==endpoint.x&&player.y==endpoint.y) flag=true;
+}
+//////////////////////////////////////////////////////////////////////////
+int main()
+{
+    preTEST();
+    char where;
+    
+    for(;;)
+    {
+        synchro();
+        showVM();
+        std::cin >> where;
+        Go(where);
+        check();
+        if(flag==true) break;
+        std::cout<<player.x<<","<<player.y<<std::endl;
+    }
+    std::cout<<"end!";
+}
