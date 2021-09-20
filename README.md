@@ -1,5 +1,6 @@
 <h1> This is a simple maze game.</h1> 
-***
+
+
 	' ' is empty place, you can go there.
 	'#' is wall.
 	's' is starting point.
