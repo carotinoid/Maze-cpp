@@ -13,7 +13,7 @@ int SizeofMaze=30;
 struct xy {int x; int y;};
 xy player, startpoint, endpoint;
 int VisionDistance = 4;
-bool flag=false;
+
 ////////////////////////////////////////////////////////////////////////
 void setCursorPosition(int x, int y)
 {
@@ -81,10 +81,7 @@ void Goandshow(char a)
     }
 
 }
-void check()
-{
-    if(player.x==endpoint.x&&player.y==endpoint.y) flag=true;
-}
+
 int getCommand()
 {
     if(_kbhit()) {
@@ -102,9 +99,7 @@ int main()
     for(;;)
     {
         Goandshow(getCommand());
-        check();
-        if(flag==true) break;
-
+        if(player.x==endpoint.x&&player.y==endpoint.y) break;
     }
     std::cout<<"end!";
     Sleep(3000);
