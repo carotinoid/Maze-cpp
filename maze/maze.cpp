@@ -15,6 +15,14 @@ xy player, startpoint, endpoint;
 int VisionDistance = 4;
 bool flag=false;
 ////////////////////////////////////////////////////////////////////////
+void setCursorPosition(int x, int y)
+{
+    static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    std::cout.flush();
+    COORD coord = { (SHORT)x, (SHORT)y };
+    SetConsoleCursorPosition(hOut, coord);
+}
+
 void preTEST()
 {
     for(int i=0;i<SizeofMaze;i++)
@@ -39,8 +47,10 @@ void synchro()
     }
     VisionMaze[player.y][player.x]='p';
 
-    system("cls");
-
+    setCursorPosition(0,0);
+    //for(int i=0;i<SizeofMaze*(SizeofMaze+1);i++) printf("\b");
+    //system("cls");
+    
     for(int i=0;i<SizeofMaze;i++)
     {
         for(int j=0;j<SizeofMaze;j++) std::cout<<VisionMaze[i][j]<<" ";
