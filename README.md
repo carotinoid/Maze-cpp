@@ -3,15 +3,14 @@
 
 	' ' is empty place, you can go there.
 	'#' is wall.
-	's' is starting point.
-	'e' is ending point.
-	'p' shows where you are.
+	'S' is starting point.
+	'E' is ending point.
+	'P' shows where you are.
 
-you can go up, left, down, right with wasd.
+&nbsp;&nbsp;you can go up, left, down, right with <b>WASD</b>.
 
-but, you want to change the shape of maze, you can use add ' and ,.<br>
-write the shape of maze with SizeofMaze.<br>
-  like this.<br>
+&nbsp;&nbsp;but, you want to change the shape of maze, you can use add ' and ,.<br>
+Write the shape of maze with SizeofMaze. like this.<br>
 
 	5
 	#####
@@ -19,18 +18,24 @@ write the shape of maze with SizeofMaze.<br>
 	# # #
 	#e#s#
 	#####
-and play the add'and,.cpp.
+	
+&nbsp;&nbsp;and play the add'and,.cpp.
 It make 'output.txt' like this.
 
 	'#','#','#','#','#','#',' ',' ',' ','#','#',' ','#',' ','#','#','e','#','s','#','#','#','#','#','#',
 
-Copy and paste them in the array, 'OriginalMaze'.<br>
+&nbsp;&nbsp;Copy and paste them in the array, 'OriginalMaze'.<br>
 and change the scale of arry and var of 'SizeofMaze'(int).<br>
 
-if you change your ablity of eyes, change 'VisionDistance'.
+&nbsp;&nbsp;if you change your ablity of eyes, change 'VisionDistance'.
+
+#
+<h1>Test map data</h1>
+
+30*30
 
 	##############################
-	#e                           #
+	#E                           #
 	############################ #
 	# #           #   #    #     #
 	# # ######### # #   #     #  #
@@ -57,13 +62,15 @@ if you change your ablity of eyes, change 'VisionDistance'.
 	# # #################### # # #
 	# #                        # #
 	# ########################## #
-	#                           s#
+	#                           S#
 	##############################
 
 #
 
+15*15
+
 	'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#',
-	'#','e',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',
+	'#','E',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',
 	'#','#','#',' ','#',' ','#','#','#','#','#','#','#',' ','#',
 	'#',' ','#',' ','#',' ','#','#','#','#','#','#','#',' ','#',
 	'#',' ','#',' ','#',' ','#','#',' ',' ',' ',' ',' ',' ','#',
@@ -75,5 +82,7 @@ if you change your ablity of eyes, change 'VisionDistance'.
 	'#',' ','#',' ','#','#','#',' ','#','#',' ',' ','#',' ','#',
 	'#',' ','#',' ',' ','#','#','#','#','#','#',' ','#',' ','#',
 	'#',' ','#','#',' ','#','#','#','#','#','#',' ','#',' ','#',
-	'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','s','#',
+	'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','S','#',
 	'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#',
+
+#
