@@ -56,7 +56,7 @@ void synchro()
 
     for(int i=0;i<SizeofMaze;i++)
     {
-        for(int j=0;j<SizeofMaze;j++) std::cout<<VisionMaze[i][j];
+        for(int j=0;j<SizeofMaze;j++) std::cout<<VisionMaze[i][j]<<" ";
         std::cout<<" "<<std::endl;
     }
 }
