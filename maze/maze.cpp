@@ -93,6 +93,7 @@ int getCommand()
 //////////////////////////////////////////////////////////////////////////
 int main()
 {
+    system("MODE CON COLS=100 LINES=50");
     preTEST();
     synchro();
 
