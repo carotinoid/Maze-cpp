@@ -9,6 +9,12 @@
 
 &nbsp;&nbsp;you can go up, left, down, right with <b>WASD</b>.
 
+<br><br><br>
+
+<h2>I will fix for program to open map file</h2>
+<h2>Rectangle can</h2>
+#
+
 &nbsp;&nbsp;but, you want to change the shape of maze, you can use add ' and ,.<br>
 Write the shape of maze with SizeofMaze. like this.<br>
 
@@ -28,6 +34,8 @@ It make 'output.txt' like this.
 and change the scale of arry and var of 'SizeofMaze'(int).<br>
 
 &nbsp;&nbsp;if you change your ablity of eyes, change 'VisionDistance'.
+
+<br><br><br>
 
 #
 <h1>Test map data</h1>
