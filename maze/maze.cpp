@@ -61,22 +61,22 @@ void Goandshow(char a)
 {
     if(a==119)
     {
-        if(OriginalMaze[player.y-1][player.x]!='#') player.y-=1;
+        if(OriginalMaze[player.y-1][player.x]==' '||OriginalMaze[player.y-1][player.x]=='s'||OriginalMaze[player.y-1][player.x]=='e') player.y-=1;
         synchro();
     }
     else if(a==97)
     {
-        if(OriginalMaze[player.y][player.x-1]!='#') player.x-=1;
+        if(OriginalMaze[player.y][player.x-1]==' '||OriginalMaze[player.y][player.x-1]=='s'||OriginalMaze[player.y][player.x-1]=='e') player.x-=1;
         synchro();
     }
     else if(a==115)
     {
-        if(OriginalMaze[player.y+1][player.x]!='#') player.y+=1;
+        if(OriginalMaze[player.y+1][player.x]==' '||OriginalMaze[player.y+1][player.x]=='s'||OriginalMaze[player.y+1][player.x]=='e') player.y+=1;
         synchro();
     }
     else if(a==100)
     {
-        if(OriginalMaze[player.y][player.x+1]!='#') player.x+=1;
+        if(OriginalMaze[player.y][player.x+1]==' '||OriginalMaze[player.y][player.x+1]=='s'||OriginalMaze[player.y][player.x+1]=='e') player.x+=1;
         synchro();
     }
 
