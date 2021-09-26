@@ -9,8 +9,21 @@
 
 &nbsp;&nbsp;you can go up, left, down, right with <b>WASD</b>.
 
-This maze program opens 'Maze.txt' files on same folder
+This maze program opens 'Maze.txt' files on same folder.
+Maze.txt is consisted of:
 
+	SizeofMaze VisionDistance
+	Maze
+	
+Maze have to include 's', Starting point and 'E', ending point.<br>
+example)
+
+	5 2
+	#####
+	#   #
+	# # #
+	#E#S#
+	#####
 
 
 
