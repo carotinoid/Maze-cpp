@@ -9,36 +9,13 @@
 
 &nbsp;&nbsp;you can go up, left, down, right with <b>WASD</b>.
 
-<br><br><br>
+This maze program opens 'Maze.txt' files on same folder
 
-<h2>I will fix for program to open map file</h2>
-<h2>Rectangle can</h2>
-#
 
-&nbsp;&nbsp;but, you want to change the shape of maze, you can use add ' and ,.<br>
-Write the shape of maze with SizeofMaze. like this.<br>
 
-	5
-	#####
-	#   #
-	# # #
-	#e#s#
-	#####
-	
-&nbsp;&nbsp;and play the add'and,.cpp.
-It make 'output.txt' like this.
-
-	'#','#','#','#','#','#',' ',' ',' ','#','#',' ','#',' ','#','#','e','#','s','#','#','#','#','#','#',
-
-&nbsp;&nbsp;Copy and paste them in the array, 'OriginalMaze'.<br>
-and change the scale of arry and var of 'SizeofMaze'(int).<br>
-
-&nbsp;&nbsp;if you change your ablity of eyes, change 'VisionDistance'.
 
 <br><br><br>
-
-#
-<h1>Test map data</h1>
+<h1>Test map Data</h1>
 
 30*30
 
