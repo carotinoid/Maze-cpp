@@ -162,6 +162,6 @@ int main()
         for(int j=0;j<SizeofMaze;j++) std::cout<<OriginalMaze[i][j]<<" ";
         std::cout<<" "<<std::endl;
     }
-    std::cout<<"END!";
+
     Sleep(3000);
 }
