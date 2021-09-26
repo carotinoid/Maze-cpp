@@ -15,7 +15,7 @@ Maze.txt is consisted of:
 	SizeofMaze VisionDistance
 	Maze
 	
-Maze have to include 's', Starting point and 'E', ending point.<br>
+Maze have to include 'S', Starting point and 'E', ending point.<br>
 example)
 
 	5 2
@@ -28,7 +28,7 @@ example)
 
 
 <br><br><br>
-<h1>Test map Data</h1>
+<h1>Test Map Data</h1>
 
 30*30
 
