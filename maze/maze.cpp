@@ -41,11 +41,11 @@ void setCursorPosition(int x, int y)
 
 void FindandReadMap()
 {
-    std::cout<<"What is maze file's name?"<<std::endl;
+    std::cout<<"What is maze file's name? (txt file, no file extension)"<<std::endl;
     std::cin>>FileName;
     setCursorPosition(0,0);
     std::ifstream file;
-    file.open(FileName);
+    file.open(FileName+".txt");
     std::string firstline;
     std::getline(file,firstline);
     std::stringstream ss(firstline);
