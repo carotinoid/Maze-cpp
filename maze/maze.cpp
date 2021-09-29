@@ -14,6 +14,7 @@ struct xy {int x; int y;};
 xy player, startpoint, endpoint, SizeofMaze;
 int VisionDistance;
 std::string FileName;
+bool flag=false;
 
 void setCurserPosition(int x, int y);
 void FindandReadMap();
@@ -22,8 +23,22 @@ void preTEST();
 void Go1(char a);
 int getCommand();
 void GameEnd();
+void delayforanyKey();
+void delay_n();
 
 
+
+
+void delay_n()
+{
+    char a;
+    std::cout<<"If you want to go next, enter 'n'";
+    while(true)
+    {
+        std::cin>>a;
+        if(a=='n') break;
+    }
+}
 
 
 
@@ -41,11 +56,16 @@ void setCursorPosition(int x, int y)
 
 void FindandReadMap()
 {
-    std::cout<<"What is maze file's name? (txt file, no file extension)"<<std::endl;
+    std::cout<<"What is maze file's name? (no file extension, it's txt)"<<std::endl;
+    std::cout<<"If you want quit, 'quit' & enter."<<std::endl;
     std::cin>>FileName;
+    system("cls");
+    if(FileName=="quit") flag=true;
     setCursorPosition(0,0);
+
+
     std::ifstream file;
-    file.open(FileName+".txt");
+    file.open("MazeList/"+FileName+".txt");
     std::string firstline;
     std::getline(file,firstline);
     std::stringstream ss(firstline);
@@ -170,6 +190,7 @@ void GameEnd()
         std::cout<<" "<<std::endl;
     }
     Sleep(3000);
+
 }
 
 
@@ -183,14 +204,22 @@ int main()
     std::cout.tie(NULL);
     system("MODE CON COLS=150 LINES=100");
 
-
-    preTEST();
-
-    for(;;)
+    while(true)
     {
-        Go1(getCommand());
-        if(player.x==endpoint.x&&player.y==endpoint.y) break;
-    }
+        system("cls");
+        preTEST();
 
-    GameEnd();
+
+        if(flag==true) {return 0;}
+
+        for(;;)
+        {
+            Go1(getCommand());
+            if(player.x==endpoint.x&&player.y==endpoint.y) break;
+        }
+
+        GameEnd();
+        delay_n();
+
+    }
 }
