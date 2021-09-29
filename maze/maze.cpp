@@ -14,7 +14,17 @@ struct xy {int x; int y;};
 xy player, startpoint, endpoint;
 int VisionDistance;
 
-////////////////////////////////////////////////////////////////////////
+void setCurserPosition(int x, int y);
+void readMap();
+void synchro();
+void preTEST();
+void Go1(char a);
+int getCommand();
+void GameEnd();
+
+
+
+
 void setCursorPosition(int x, int y)
 {
     static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -22,7 +32,12 @@ void setCursorPosition(int x, int y)
     COORD coord = { (SHORT)x, (SHORT)y };
     SetConsoleCursorPosition(hOut, coord);
 }
-void readMap(){
+
+
+
+
+void readMap()
+{
     std::ifstream file;
     file.open("./Maze.txt");
     std::string firstline;
@@ -40,19 +55,13 @@ void readMap(){
     }
     file.close();
 }
-void preTEST()
-{
-    readMap();
-    for(int i=0;i<SizeofMaze;i++)
-    {
-        for(int j=0;j<SizeofMaze;j++)
-        {
-            if(OriginalMaze[i][j]=='S') {startpoint.x=j; startpoint.y=i;}
-            if(OriginalMaze[i][j]=='E') {endpoint.x=j; endpoint.y=i;}
-        }
-    }
-    player.x=startpoint.x; player.y=startpoint.y;
-}
+
+
+
+
+
+
+
 void synchro()
 {
     for(int i=0;i<SizeofMaze;i++)
@@ -75,7 +84,30 @@ void synchro()
         std::cout<<" "<<std::endl;
     }
 }
-void Goandshow(char a)
+
+
+
+void preTEST()
+{
+    readMap();
+    for(int i=0;i<SizeofMaze;i++)
+    {
+        for(int j=0;j<SizeofMaze;j++)
+        {
+            if(OriginalMaze[i][j]=='S') {startpoint.x=j; startpoint.y=i;}
+            if(OriginalMaze[i][j]=='E') {endpoint.x=j; endpoint.y=i;}
+        }
+    }
+    player.x=startpoint.x; player.y=startpoint.y;
+    synchro();
+}
+
+
+
+
+
+
+void Go1(char a)
 {
     if(a==119)
     {
@@ -97,8 +129,11 @@ void Goandshow(char a)
         if(OriginalMaze[player.y][player.x+1]==' '||OriginalMaze[player.y][player.x+1]=='S'||OriginalMaze[player.y][player.x+1]=='E') player.x+=1;
         synchro();
     }
-
 }
+
+
+
+
 
 int getCommand()
 {
@@ -108,29 +143,41 @@ int getCommand()
 
     return -1;
 }
-//////////////////////////////////////////////////////////////////////////
-int main()
+
+
+
+
+
+void GameEnd()
 {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
-    std::cout.tie(NULL);
-
-    system("MODE CON COLS=150 LINES=100");
-    preTEST();
-    synchro();
-
-    for(;;)
-    {
-        Goandshow(getCommand());
-        if(player.x==endpoint.x&&player.y==endpoint.y) break;
-    }
-
     setCursorPosition(0,0);
     for(int i=0;i<SizeofMaze;i++)
     {
         for(int j=0;j<SizeofMaze;j++) std::cout<<OriginalMaze[i][j]<<" ";
         std::cout<<" "<<std::endl;
     }
-
     Sleep(3000);
+}
+
+
+
+
+
+int main()
+{
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    std::cout.tie(NULL);
+    system("MODE CON COLS=150 LINES=100");
+
+
+    preTEST();
+
+    for(;;)
+    {
+        Go1(getCommand());
+        if(player.x==endpoint.x&&player.y==endpoint.y) break;
+    }
+
+    GameEnd();
 }
