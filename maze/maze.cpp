@@ -9,9 +9,9 @@
 
 char OriginalMaze[100][100];
 char VisionMaze[100][100];
-int SizeofMaze;
+
 struct xy {int x; int y;};
-xy player, startpoint, endpoint;
+xy player, startpoint, endpoint, SizeofMaze;
 int VisionDistance;
 
 void setCurserPosition(int x, int y);
@@ -21,6 +21,7 @@ void preTEST();
 void Go1(char a);
 int getCommand();
 void GameEnd();
+
 
 
 
@@ -36,6 +37,7 @@ void setCursorPosition(int x, int y)
 
 
 
+
 void readMap()
 {
     std::ifstream file;
@@ -43,13 +45,13 @@ void readMap()
     std::string firstline;
     std::getline(file,firstline);
     std::stringstream ss(firstline);
-    ss>>SizeofMaze>>VisionDistance;
+    ss>>SizeofMaze.x>>SizeofMaze.y>>VisionDistance;
 
-    for(int i=0;i<SizeofMaze;i++){
+    for(int i=0;i<SizeofMaze.y;i++){
         std::string oneline;
         std::getline(file, oneline);
         std::cout<<oneline<<std::endl;
-        for(int j=0;j<SizeofMaze;j++){
+        for(int j=0;j<SizeofMaze.x;j++){
             OriginalMaze[i][j]=oneline[j];
         }
     }
@@ -61,16 +63,15 @@ void readMap()
 
 
 
-
 void synchro()
 {
-    for(int i=0;i<SizeofMaze;i++)
+    for(int i=0;i<SizeofMaze.y;i++)
     {
-        for(int j=0;j<SizeofMaze;j++) VisionMaze[i][j]=' ';
+        for(int j=0;j<SizeofMaze.x;j++) VisionMaze[i][j]=' ';
     }
-    for(int i=0;i<SizeofMaze;i++)
+    for(int i=0;i<SizeofMaze.y;i++)
     {
-        for(int j=0;j<SizeofMaze;j++) if(sqrt((pow(player.x-j,2))+(pow(player.y-i,2))) <= VisionDistance) VisionMaze[i][j]=OriginalMaze[i][j];
+        for(int j=0;j<SizeofMaze.x;j++) if(sqrt((pow(player.x-j,2))+(pow(player.y-i,2))) <= VisionDistance) VisionMaze[i][j]=OriginalMaze[i][j];
     }
     VisionMaze[player.y][player.x]='P';
     VisionMaze[endpoint.y][endpoint.x]='E';
@@ -78,21 +79,23 @@ void synchro()
     //for(int i=0;i<SizeofMaze*(SizeofMaze+1);i++) printf("\b");
     //system("cls");
 
-    for(int i=0;i<SizeofMaze;i++)
+    for(int i=0;i<SizeofMaze.y;i++)
     {
-        for(int j=0;j<SizeofMaze;j++) std::cout<<VisionMaze[i][j]<<" ";
+        for(int j=0;j<SizeofMaze.x;j++) std::cout<<VisionMaze[i][j]<<" ";
         std::cout<<" "<<std::endl;
     }
 }
 
 
 
+
+
 void preTEST()
 {
     readMap();
-    for(int i=0;i<SizeofMaze;i++)
+    for(int i=0;i<SizeofMaze.y;i++)
     {
-        for(int j=0;j<SizeofMaze;j++)
+        for(int j=0;j<SizeofMaze.x;j++)
         {
             if(OriginalMaze[i][j]=='S') {startpoint.x=j; startpoint.y=i;}
             if(OriginalMaze[i][j]=='E') {endpoint.x=j; endpoint.y=i;}
@@ -101,7 +104,6 @@ void preTEST()
     player.x=startpoint.x; player.y=startpoint.y;
     synchro();
 }
-
 
 
 
@@ -151,9 +153,9 @@ int getCommand()
 void GameEnd()
 {
     setCursorPosition(0,0);
-    for(int i=0;i<SizeofMaze;i++)
+    for(int i=0;i<SizeofMaze.y;i++)
     {
-        for(int j=0;j<SizeofMaze;j++) std::cout<<OriginalMaze[i][j]<<" ";
+        for(int j=0;j<SizeofMaze.x;j++) std::cout<<OriginalMaze[i][j]<<" ";
         std::cout<<" "<<std::endl;
     }
     Sleep(3000);
