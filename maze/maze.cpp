@@ -13,14 +13,16 @@ char VisionMaze[100][100];
 struct xy {int x; int y;};
 xy player, startpoint, endpoint, SizeofMaze;
 int VisionDistance;
+std::string FileName;
 
 void setCurserPosition(int x, int y);
-void readMap();
+void FindandReadMap();
 void synchro();
 void preTEST();
 void Go1(char a);
 int getCommand();
 void GameEnd();
+
 
 
 
@@ -37,11 +39,13 @@ void setCursorPosition(int x, int y)
 
 
 
-
-void readMap()
+void FindandReadMap()
 {
+    std::cout<<"What is maze file's name?"<<std::endl;
+    std::cin>>FileName;
+    setCursorPosition(0,0);
     std::ifstream file;
-    file.open("./Maze.txt");
+    file.open(FileName);
     std::string firstline;
     std::getline(file,firstline);
     std::stringstream ss(firstline);
@@ -57,6 +61,7 @@ void readMap()
     }
     file.close();
 }
+
 
 
 
@@ -88,11 +93,9 @@ void synchro()
 
 
 
-
-
 void preTEST()
 {
-    readMap();
+    FindandReadMap();
     for(int i=0;i<SizeofMaze.y;i++)
     {
         for(int j=0;j<SizeofMaze.x;j++)
@@ -104,6 +107,7 @@ void preTEST()
     player.x=startpoint.x; player.y=startpoint.y;
     synchro();
 }
+
 
 
 
@@ -129,6 +133,13 @@ void Go1(char a)
     else if(a==100)
     {
         if(OriginalMaze[player.y][player.x+1]==' '||OriginalMaze[player.y][player.x+1]=='S'||OriginalMaze[player.y][player.x+1]=='E') player.x+=1;
+        synchro();
+    }
+    else if(a=='p') //for debug
+    {
+        int asdf, fdsa;
+        std::cin>>asdf>>fdsa;
+        player.x=asdf; player.y=fdsa;
         synchro();
     }
 }
