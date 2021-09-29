@@ -12,13 +12,13 @@
 This maze program opens 'Maze.txt' files on same folder.
 Maze.txt is consisted of:
 
-	SizeofMaze VisionDistance
+	SizeofMaze.x SizeofMaze.y VisionDistance
 	Maze
 	
 Maze have to include 'S', Starting point and 'E', ending point.<br>
 example)
 
-	5 2
+	5 5 2
 	#####
 	#   #
 	# # #
@@ -32,7 +32,7 @@ example)
 
 
 
-	15 5
+	15 15 5
         ###############
 	#E  #         #
 	### # ####### #
@@ -50,7 +50,7 @@ example)
 	###############
 #
 
- 	30 5
+ 	30 30 5
 	##############################
 	#E                           #
 	############################ #
@@ -85,7 +85,7 @@ example)
 
 #
 
-	50 5
+	50 50 5
 	##################################################
 	#E#   #   #   #      #                         #S#
 	# # #   #   # ## ### # ####################### # #
