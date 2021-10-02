@@ -23,7 +23,6 @@ void preTEST();
 void Go1(char a);
 int getCommand();
 void GameEnd();
-void delayforanyKey();
 void delay_n();
 
 
