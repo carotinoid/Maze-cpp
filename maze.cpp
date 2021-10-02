@@ -14,7 +14,7 @@ struct xy {int x; int y;};
 xy player, startpoint, endpoint, SizeofMaze;
 int VisionDistance;
 std::string FileName;
-bool flag=false;
+
 
 void setCurserPosition(int x, int y);
 void FindandReadMap();
@@ -60,7 +60,7 @@ void FindandReadMap()
     std::cout<<"If you want quit, 'quit' & enter."<<std::endl;
     std::cin>>FileName;
     system("cls");
-    if(FileName=="quit") flag=true;
+    if(FileName=="quit") exit(0);
     setCursorPosition(0,0);
 
 
@@ -208,7 +208,7 @@ int main()
         preTEST();
 
 
-        if(flag==true) {return 0;}
+
 
         for(;;)
         {
