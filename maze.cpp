@@ -9,13 +9,10 @@
 
 char OriginalMaze[100][100];
 char VisionMaze[100][100];
-
 struct xy {int x; int y;};
 xy player, startpoint, endpoint, SizeofMaze;
 int VisionDistance;
 std::string FileName;
-
-
 void setCurserPosition(int x, int y);
 void FindandReadMap();
 void synchro();
@@ -24,9 +21,6 @@ void Go1(char a);
 int getCommand();
 void GameEnd();
 void delay_n();
-
-
-
 
 void delay_n()
 {
@@ -40,9 +34,6 @@ void delay_n()
     }
 }
 
-
-
-
 void setCursorPosition(int x, int y)
 {
     static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -50,9 +41,6 @@ void setCursorPosition(int x, int y)
     COORD coord = { (SHORT)x, (SHORT)y };
     SetConsoleCursorPosition(hOut, coord);
 }
-
-
-
 
 void FindandReadMap()
 {
@@ -82,12 +70,6 @@ void FindandReadMap()
     file.close();
 }
 
-
-
-
-
-
-
 void synchro()
 {
     for(int i=0;i<SizeofMaze.y;i++)
@@ -96,7 +78,8 @@ void synchro()
     }
     for(int i=0;i<SizeofMaze.y;i++)
     {
-        for(int j=0;j<SizeofMaze.x;j++) if(sqrt((pow(player.x-j,2))+(pow(player.y-i,2))) <= VisionDistance) VisionMaze[i][j]=OriginalMaze[i][j];
+        for(int j=0;j<SizeofMaze.x;j++)
+            if(sqrt((pow(player.x-j,2))+(pow(player.y-i,2))) <= VisionDistance) VisionMaze[i][j]=OriginalMaze[i][j];
     }
     VisionMaze[player.y][player.x]='P';
     VisionMaze[endpoint.y][endpoint.x]='E';
@@ -110,8 +93,6 @@ void synchro()
         std::cout<<" "<<std::endl;
     }
 }
-
-
 
 void preTEST()
 {
@@ -128,31 +109,30 @@ void preTEST()
     synchro();
 }
 
-
-
-
-
-
+inline bool canGo(int y, int x)
+{
+    return OriginalMaze[y][x]==' '||OriginalMaze[y][x]=='S'||OriginalMaze[y][x]=='E';
+}
 void Go1(char a)
 {
-    if(a==119)
+    if(a=='w')
     {
-        if(OriginalMaze[player.y-1][player.x]==' '||OriginalMaze[player.y-1][player.x]=='S'||OriginalMaze[player.y-1][player.x]=='E') player.y-=1;
+        if(canGo(player.y-1,player.x)) player.y-=1;
         synchro();
     }
-    else if(a==97)
+    else if(a=='a')
     {
-        if(OriginalMaze[player.y][player.x-1]==' '||OriginalMaze[player.y][player.x-1]=='S'||OriginalMaze[player.y][player.x-1]=='E') player.x-=1;
+        if(canGo(player.y,player.x-1)) player.x-=1;
         synchro();
     }
-    else if(a==115)
+    else if(a=='s')
     {
-        if(OriginalMaze[player.y+1][player.x]==' '||OriginalMaze[player.y+1][player.x]=='S'||OriginalMaze[player.y+1][player.x]=='E') player.y+=1;
+        if(canGo(player.y+1,player.x)) player.y+=1;
         synchro();
     }
-    else if(a==100)
+    else if(a=='d')
     {
-        if(OriginalMaze[player.y][player.x+1]==' '||OriginalMaze[player.y][player.x+1]=='S'||OriginalMaze[player.y][player.x+1]=='E') player.x+=1;
+        if(canGo(player.y,player.x+1)) player.x+=1;
         synchro();
     }
     else if(a=='p') //for debug
@@ -164,10 +144,6 @@ void Go1(char a)
     }
 }
 
-
-
-
-
 int getCommand()
 {
     if(_kbhit()) {
@@ -176,10 +152,6 @@ int getCommand()
 
     return -1;
 }
-
-
-
-
 
 void GameEnd()
 {
@@ -190,10 +162,6 @@ void GameEnd()
         std::cout<<" "<<std::endl;
     }
 }
-
-
-
-
 
 int main()
 {
@@ -207,9 +175,6 @@ int main()
         system("cls");
         preTEST();
 
-
-
-
         for(;;)
         {
             Go1(getCommand());
@@ -218,6 +183,5 @@ int main()
 
         GameEnd();
         delay_n();
-
     }
 }
